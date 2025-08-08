@@ -1,0 +1,60 @@
+---
+title: "morning task"
+format: html
+editor: visual
+execute: 
+  warning: false
+---
+
+suppressing warning and messages JUST for this code chunk
+
+```{r}
+#| warning: false
+#| message: false
+library(tidyverse)
+```
+
+```{r}
+#| include: false
+# return the first 6 lines of SW data
+head(starwars)
+dim(starwars)
+
+```
+
+```{r}
+#| warning: false
+#| echo: false
+
+ggplot(starwars, aes(x = height, y = mass, colour = mass)) +
+  geom_point() +
+  labs(x = "Height (cm)", 
+       y = "Mass (kg)")
+
+```
+
+show code and output
+
+```{r}
+
+#| fig-cap: "caption text"
+#| fig-alt: "figure alt text"
+ggplot(data = starwars, aes(x = height)) +
+  geom_histogram(color = "red", fill = "purple")
+
+```
+
+Find sum stats for SW characters
+
+```{r}
+sw_height_mean <- mean(starwars$height, na.rm = TRUE)
+sw_height_median <-median(starwars$height, na.rm = TRUE)
+sw_height_var <-var(starwars$height, na.rm = TRUE)
+sw_height_sd <-sd(starwars$height, na.rm = TRUE)
+```
+
+the mean height of characters in Star Wars is \`r round(sw_height_mean, 1)\` centimeters
+
+```{r}
+
+```
